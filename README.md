@@ -1,7 +1,36 @@
 # Social Media TCP Server
 
 This is the code part of the social media TCP server-bloom filter in our project.
-You can find the [API server & web client](https://ant.apache.org/bindownload.cgi) and the [android client](https://ant.apache.org/bindownload.cgi) in a different repesatories.
+You can find the [API server & web client](https://github.com/MeitarTeper/SocialMedia) and the [android client](https://github.com/MeitarTeper/SocialMedia-Android) in a different repesatories.
+
+For further explanation please open the main repository of this project - the [API server & web client](https://github.com/MeitarTeper/SocialMedia).
+## Executing the program
+
+First clone the repository
+```bash
+git clone https://github.com/MeitarTeper/SocialMedia-TCP-Server.git
+```
+### Normal compile:
+Build the program
+```bash
+cmake -B build -S .
+cmake --build build 
+```
+
+Then, run the program.
+```bash
+./build/run_project
+```
+
+### With Docker:
+build the program-
+```bash
+sudo docker build -t run_project .
+```
+execute the program-
+```bash
+sudo docker run -i -t -p 5555:5555 run_project
+```
 
 ## Bloom Filter
 A bloom filter is a probabilistic data structure that is based on hashing. It is extremely time and space efficient and is typically used to add elements to a set and test if an element is in a set. However, the elements themselves are not added to a set. Instead a hash of the elements is added to the set.
@@ -19,3 +48,8 @@ In our project the bloom filter holds all the URLs that are not safe. First, we 
 
 ## TCP server
 This server connects between our nodeJS server and the Bloom Filter through a socket. This server is multithreaded so it can handle many requests and for each one of them it opens a new thread. The server helps us to make sure our app doesn't contain unsafe URLs. Every time a user wants to add or edit a post, if the post contains a URL it will be send to the TCP server and the server will return 'true' if the URL is safe, 'false' otherwise.
+
+## Application authors 
+[Shahar Chen](https://github.com/Shahar2612)  
+[Yaara Sirkis](https://github.com/YaaraSirkis)  
+[Meitar Teper](https://github.com/MeitarTeper) 
